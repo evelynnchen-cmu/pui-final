@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: Minecraft;
+	src: url('../fonts/minecraft.otf');
+}
+
+h1, h2, h3, h4, .mc-font {
+  font-family: 'Minecraft', sans-serif;
+}
+
+@layer utilities {
+  html {
+    @apply text-[#FFF5EA];
+  }
+}
