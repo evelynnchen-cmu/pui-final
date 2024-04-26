@@ -15,6 +15,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  // update corresponding username textbox
   function handleUsernameChange(index, value) {
     const updatedUsernames = usernames.map((username, i) =>
       i === index ? value : username
@@ -206,7 +207,6 @@ export default function Home() {
               Compare
             </button>
           )}
-
 
           <Toaster
             position="top-center"

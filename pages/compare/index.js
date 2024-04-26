@@ -13,7 +13,7 @@ export default function Compare() {
   useEffect(() => {
     async function fetchDataAndAvatars() {
 
-      // retrieve player data 
+      // retrieve player data from localStrorage 
       const data = localStorage.getItem('playerData');
       let players = [];
       if (data) {

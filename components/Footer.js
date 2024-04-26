@@ -8,7 +8,8 @@ export default function Footer() {
       <div className="sm:flex sm:items-center sm:justify-between">
         <p>Powered by <a href="https://api.hypixel.net/" target="_blank" className="underline cursor-pointer">Hypixel's Public API</a></p>
         <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-          <div className="sm:text-end">© 2024 <a href="https://evelynnchen.com/" target="_blank" className="underline cursor-pointer">Evelynn Chen</a> 
+          <div className="sm:text-end">
+            © 2024 <a href="https://evelynnchen.com/" target="_blank" className="underline cursor-pointer">Evelynn Chen</a> 
           </div>
         </div>
       </div>

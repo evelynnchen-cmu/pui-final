@@ -9,11 +9,11 @@ export default function PlayerTabs({ playersData, avatars }) {
             const table = document.getElementById('player-table');
             if (table.offsetWidth > window.innerWidth) {
 
-              document.getElementById('scroll-msg').style.display = 'block';
+                document.getElementById('scroll-msg').style.display = 'block';
             } else {
-              document.getElementById('scroll-msg').style.display = 'none';
+                document.getElementById('scroll-msg').style.display = 'none';
             }
-          };
+        };
 
         checkOverflow();
 
@@ -22,7 +22,7 @@ export default function PlayerTabs({ playersData, avatars }) {
         return () => window.removeEventListener('resize', checkOverflow);
     }, []);
 
-    const gameModes = {
+    const GAME_MODES = {
         solo: 'Solos',
         duo: 'Doubles',
         trio: '3v3v3v3',
@@ -30,8 +30,8 @@ export default function PlayerTabs({ playersData, avatars }) {
     };
 
     const [activeTab, setActiveTab] = useState(0);
-    
-    const statCategories = [
+
+    const STAT_CATEGORIES = [
         'games_played', 'wins', 'losses', 'kills', 'deaths',
         'beds_broken', 'beds_lost', 'final_kills', 'final_deaths', 'resources_collected'
     ];
@@ -114,8 +114,8 @@ export default function PlayerTabs({ playersData, avatars }) {
                             <li>Achievement Points: {player.data.general.achievement_points || "0"}</li>
                             <li>Total Kills: {player.data.general.kills || "0"}</li>
                             <li>Total Wins: {player.data.general.wins || "0"}</li>
-                            <li>Last Login: {player.data.general.last_login || "Not found"}</li>
-                            <li>First Login: {player.data.general.first_login || "Not found"}</li>
+                            <li>Last Login: {player.data.general.last_login || "Date not found"}</li>
+                            <li>First Login: {player.data.general.first_login || "Date not found"}</li>
                         </ul>
                         <div className=" col-span-2">
                             <h5 id="scroll-msg" className="text-right text-sm italic mb-2 block md:hidden">Scroll to view more</h5>
@@ -124,7 +124,7 @@ export default function PlayerTabs({ playersData, avatars }) {
                                     <thead className="bg-mc-gray">
                                         <tr>
                                             <th className="px-4 py-2 text-right text-xs font-medium tracking-wider">All Stats</th>
-                                            {Object.entries(gameModes).map(([_, modeVal], index) => (
+                                            {Object.entries(GAME_MODES).map(([_, modeVal], index) => (
                                                 <th key={index} className="px-6 py-3 text-center text-xs font-medium tracking-wider">
                                                     {modeVal}
                                                 </th>
@@ -132,16 +132,18 @@ export default function PlayerTabs({ playersData, avatars }) {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-gray-300">
-                                        {statCategories.map((stat, statIndex) => (
+                                        {STAT_CATEGORIES.map((stat, statIndex) => (
                                             <tr key={statIndex} className={`${statIndex % 2 === 0 ? 'bg-mc-gray/95' : 'bg-mc-gray/85'}`}>
                                                 <td className="px-4 py-2 whitespace-nowrap text-sm text-right tracking-wider capitalize">
                                                     {stat.replace(/_/g, ' ')}
                                                 </td>
-                                                {Object.entries(gameModes).map(([modeKey, _], modeIndex) => {
+                                                {Object.entries(GAME_MODES).map(([modeKey, _], modeIndex) => {
                                                     const modeData = player.data[modeKey];
                                                     const statValue = modeData && modeData[stat] ? modeData[stat] : '0';
                                                     return (
-                                                        <td key={`${modeIndex}-${statIndex}`} className="px-4 lg:px-8 py-2 lg:py-4 text-sm text-center"> {statValue} </td>
+                                                        <td key={`${modeIndex}-${statIndex}`} className="px-4 lg:px-8 py-2 lg:py-4 text-sm text-center">
+                                                            {statValue}
+                                                        </td>
                                                     );
                                                 })}
                                             </tr>

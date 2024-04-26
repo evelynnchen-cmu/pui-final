@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 
+// convert timestamp to a readable date
 function formatDate(timestamp) {
     return new Date(timestamp).toLocaleString('en-US', {
         year: 'numeric',
